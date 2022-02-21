@@ -10,7 +10,7 @@ export class AppController {
     try {
       const accessToken = 'something';
       res.cookie('serverToken', accessToken, {
-        expires: new Date(new Date().getTime() + 30 * 1000),
+        expires: new Date(new Date().getTime() + 60 * 1000),
         sameSite: 'strict',
         httpOnly: true,
       });
