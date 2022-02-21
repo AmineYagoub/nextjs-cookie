@@ -15,7 +15,7 @@ FROM base AS builder
 
 
 WORKDIR /app
-COPY ui/* .
+COPY ui/ .
 COPY --from=deps /app/node_modules ./node_modules
 ENV NEXT_TELEMETRY_DISABLED 1
 RUN yarn build
