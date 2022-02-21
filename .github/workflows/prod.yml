@@ -30,7 +30,7 @@ jobs:
           context: .
           pull: true
           push: true
-          file: docker/ui/Dockerfile
+          file: ui/Dockerfile
           cache-from: type=registry,ref=amineyagoub/app-frontend:latest
           cache-to: type=inline
           tags: amineyagoub/app-frontend:latest
@@ -55,7 +55,7 @@ jobs:
           context: .
           pull: true
           push: true
-          file: docker/server/Dockerfile
+          file: server/Dockerfile
           cache-from: type=registry,ref=amineyagoub/api-api:latest
           cache-to: type=inline
           tags: amineyagoub/api-api:latest
