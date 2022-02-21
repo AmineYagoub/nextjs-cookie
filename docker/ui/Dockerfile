@@ -3,7 +3,7 @@ RUN apt-get install -y --no-install-recommends git
 
 FROM base AS deps
 WORKDIR /app
-COPY package.json ./
+COPY ui/package.json ./
 RUN yarn install --frozen-lockfile
 RUN npm install sharp
 
@@ -15,7 +15,7 @@ FROM base AS builder
 
 
 WORKDIR /app
-COPY . .
+COPY ui/* .
 COPY --from=deps /app/node_modules ./node_modules
 RUN yarn build
 

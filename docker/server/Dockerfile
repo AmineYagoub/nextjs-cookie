@@ -1,14 +1,14 @@
 FROM node:14-buster-slim as base
 
 WORKDIR /app
-COPY package.json ./
+COPY server/package.json ./
 RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM node:14-buster-slim AS builder
 
 WORKDIR /app
-COPY . .
+COPY server/* .
 COPY --from=base /app/node_modules ./node_modules
 RUN yarn build
 
