@@ -17,6 +17,7 @@ FROM base AS builder
 WORKDIR /app
 COPY ui/* .
 COPY --from=deps /app/node_modules ./node_modules
+ENV NEXT_TELEMETRY_DISABLED 1
 RUN yarn build
 
 # Production image, copy all the files and run next
@@ -24,7 +25,6 @@ FROM node:16-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
